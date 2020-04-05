@@ -19,12 +19,22 @@ pipeline {
             """)
          }
       }
+<<<<<<< HEAD
+=======
       stage('Start test app') {
          steps {
             pwsh(script: """
-               docker-compose up -d
+               # Start app line missing!
                ./scripts/test_container.ps1
             """)
+         }
+         post {
+            success {
+               echo "App started successfully :)"
+            }
+            failure {
+               echo "App failed to start :("
+            }
          }
       }
       stage('Run Tests') {
@@ -41,5 +51,6 @@ pipeline {
             """)
          }
       }
+>>>>>>> 9bc0929... removing docker-compose up
    }
 }
