@@ -19,8 +19,6 @@ pipeline {
             """)
          }
       }
-<<<<<<< HEAD
-=======
       stage('Start test app') {
          steps {
             pwsh(script: """
@@ -51,6 +49,5 @@ pipeline {
             """)
          }
       }
->>>>>>> 9bc0929... removing docker-compose up
    }
 }
