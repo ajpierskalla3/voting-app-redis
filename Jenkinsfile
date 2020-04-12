@@ -49,5 +49,10 @@ pipeline {
             """)
          }
       }
+      stage('Run Anchore') {
+         steps {
+            anchore 'jenkins-pipeline'
+         }
+      }
    }
 }
