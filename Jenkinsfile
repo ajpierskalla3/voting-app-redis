@@ -53,7 +53,7 @@ pipeline {
          agent {
             docker { 
                image 'docker.io/aquasec/trivy'
-               args "-v $WORKSPACE:/root/.cache/" 
+               args "-v c:/tools:/root/.cache/" 
             }
          }
          steps {
