@@ -52,7 +52,7 @@ pipeline {
       stage('Push Container') {
          steps {
             script {
-               docker.withRegistry('https://index.docker.io/v1/', 'blackdentech') {
+               docker.withRegistry('https://index.docker.io/v1/', 'DockerHub') {
                   def image = docker.build('blackdentech/jenkins-course:latest')
                   image.push()
                }
