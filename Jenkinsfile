@@ -51,12 +51,14 @@ pipeline {
       }
       stage('Push Container') {
          steps {
+            pwsh(script: 'cd azure-vote/')
             script {
                docker.withRegistry('https://index.docker.io/v1/', 'DockerHub') {
                   def image = docker.build('blackdentech/jenkins-course:latest')
                   image.push()
                }
             }
+            pwsh(script: 'cd ..')
          }
       }
    }
