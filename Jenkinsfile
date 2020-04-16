@@ -53,12 +53,12 @@ pipeline {
          steps {
             pwsh(script: "cd azure-vote/")
             println pwd()
-            // script {
-            //    docker.withRegistry('https://index.docker.io/v1/', 'DockerHub') {
-            //       def image = docker.build('blackdentech/jenkins-course:latest')
-            //       image.push()
-            //    }
-            // }
+            script {
+               docker.withRegistry('https://index.docker.io/v1/', 'DockerHub') {
+                  def image = docker.build('blackdentech/jenkins-course:latest')
+                  image.push()
+               }
+            }
             pwsh(script: 'cd ..')
          }
       }
