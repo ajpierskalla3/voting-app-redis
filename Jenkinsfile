@@ -52,7 +52,7 @@ pipeline {
       stage('Run Trivy') {
          agent {
             docker { 
-               image 'aquasec/trivy'
+               image 'aquasec:trivy'
                args "-v $WORKSPACE:/root/.cache/" 
             }
          }
