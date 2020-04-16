@@ -51,8 +51,8 @@ pipeline {
       }
       stage('Run Trivy') {
          steps {
-            bat(script: """
-               C:\\Windows\\System32\\bash.exe -c "trivy blackdentech/jenkins-course"
+            pwsh(script: """
+              docker run --rm -v $WORKSPACE:/root/.cache/ aquasec/trivy blackdentech/jenkins-course
             """)
          }
       }
