@@ -51,7 +51,7 @@ pipeline {
       }
       stage('Push Container') {
          steps {
-            pwsh(script: "cd $WORKSPACE/azure-vote/")
+            dir "$WORKSPACE/azure-vote/"
             println pwd()
             script {
                docker.withRegistry('https://index.docker.io/v1/', 'DockerHub') {
@@ -59,7 +59,7 @@ pipeline {
                   image.push()
                }
             }
-            pwsh(script: 'cd ..')
+            dir "$WORKSPACE"
          }
       }
    }
