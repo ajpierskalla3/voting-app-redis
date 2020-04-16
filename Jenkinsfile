@@ -49,9 +49,14 @@ pipeline {
             """)
          }
       }
-      stage('Run Anchore') {
+      stage('Push Container') {
          steps {
-            anchore 'jenkins-pipeline'
+            script {
+               docker.withRegistry('https://index.docker.io/v1/', 'docker-exampleuser') {
+                  def image = docker.build('blackdentech/jenkins-course:latest')
+                  image.push()
+               }
+            }
          }
       }
    }
