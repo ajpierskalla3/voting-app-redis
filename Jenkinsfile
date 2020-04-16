@@ -51,6 +51,7 @@ pipeline {
       }
       stage('Push Container') {
          steps {
+            echo "$WORKSPACE"
             dir(path: "$WORKSPACE/azure-vote/")
             println pwd()
             script {
