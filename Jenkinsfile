@@ -53,7 +53,6 @@ pipeline {
          steps {
             echo "$WORKSPACE"
             dir(path: "$WORKSPACE/azure-vote/")
-            println pwd()
             script {
                docker.withRegistry('https://index.docker.io/v1/', 'DockerHub') {
                   def image = docker.build('blackdentech/jenkins-course:latest')
