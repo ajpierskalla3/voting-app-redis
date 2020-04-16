@@ -50,15 +50,11 @@ pipeline {
          }
       }
       stage('Run Trivy') {
-         agent {
-            docker { 
-               image 'docker.io/aquasec/trivy'
-               args "-v c:/tools:/root/.cache/" 
-            }
-         }
          steps {
             steps {
-                sh 'blackdentech/jenkins-course'
+                pwsh(script: """
+                  docker run --rm -v $WORKSPACE:/root/.cache/ aquasec/trivy blackdentech/jenkins-course
+                """)
             }
          }
       }
