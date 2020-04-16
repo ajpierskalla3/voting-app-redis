@@ -52,7 +52,7 @@ pipeline {
       stage('Run Trivy') {
          steps {
             pwsh(script: """
-              docker run --rm -v $WORKSPACE:/root/.cache/ aquasec/trivy blackdentech/jenkins-course -f json -o results.json
+              trivy blackdentech/jenkins-course
             """)
          }
       }
