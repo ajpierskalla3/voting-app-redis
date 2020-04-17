@@ -51,19 +51,11 @@ pipeline {
       }
       stage('Run Trivy') {
          agent {
-            docker {
-               image 'golang:1.14.2'
-            }
+            label 'trivy'
          }
          steps {
             sh(script: """
-               mkdir -p \$GOPATH/src/github.com/aquasecurity
-               cd \$GOPATH/src/github.com/aquasecurity
-               git clone https://github.com/aquasecurity/trivy
-               cd trivy/cmd/trivy/
-               export GO111MODULE=on
-               go install
-               trivy blackdentech/jenkins-course
+              trivy blackdentech/jenkins-course
             """)
          }
       }
