@@ -51,7 +51,7 @@ pipeline {
       }
       stage('Run Trivy') {
          steps {
-            bat(script: """
+            pwsh(script: """
               C:\\Windows\\System32\\wsl.exe -- trivy blackdentech/jenkins-course
             """)
          }
