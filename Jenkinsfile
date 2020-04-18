@@ -49,5 +49,13 @@ pipeline {
             """)
          }
       }
+      stage('Run Anchore') {
+         steps {
+            pwsh(script: """
+               Write-Output "blackdentech/jenkins-course" > anchore_images
+            """)
+            anchore bailOnFail: false, bailOnPluginFail: false, name: 'anchore_images'
+         }
+      }
    }
 }
