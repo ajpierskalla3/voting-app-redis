@@ -50,11 +50,8 @@ pipeline {
          }
       }
       stage('Run Trivy') {
-         agent {
-            label 'trivy'
-         }
          steps {
-            sh(script: """
+            bat(script: """
               trivy blackdentech/jenkins-course
             """)
          }
