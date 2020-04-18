@@ -52,7 +52,7 @@ pipeline {
       stage('Run Trivy') {
          steps {
             pwsh(script: """
-              C:\\Windows\\System32\\wsl.exe -- trivy blackdentech/jenkins-course
+              C:\\Windows\\System32\\wsl.exe -- sudo trivy blackdentech/jenkins-course
             """)
          }
       }
