@@ -57,5 +57,12 @@ pipeline {
             anchore bailOnFail: false, bailOnPluginFail: false, name: 'anchore_images'
          }
       }
+      stage('Run Trivy') {
+         steps {
+            pwsh(script: """
+              C:\\Windows\\System32\\wsl.exe -- sudo trivy blackdentech/jenkins-course
+            """)
+         }
+      }
    }
 }
