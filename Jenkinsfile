@@ -61,7 +61,7 @@ pipeline {
             }
             stage('Run Trivy') {
                steps {
-                  sleep 30
+                  sleep(time: 30, unit: SECONDS)
                   // pwsh(script: """
                   // C:\\Windows\\System32\\wsl.exe -- sudo trivy blackdentech/jenkins-course
                   // """)
