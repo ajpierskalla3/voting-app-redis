@@ -94,7 +94,7 @@ pipeline {
       stage('Deploy to PROD') {
          steps {
             // TODO
-            // Add aks deploy step
+            echo 'Add aks deploy step'
          }
       }
    }
