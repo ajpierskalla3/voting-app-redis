@@ -80,17 +80,17 @@ pipeline {
             )
          }
       }
-      stage('Approve PROD Deploy') {
-         options {
-            timeout(time: 1, unit: 'HOURS') 
-         }
-         steps {
-            input {
-               message: "Deploy?"
-               ok: "By your command..."
-            }
-         }
-      }
+      // stage('Approve PROD Deploy') {
+      //    options {
+      //       timeout(time: 1, unit: 'HOURS') 
+      //    }
+      //    steps {
+      //       input {
+      //          message: "Deploy?"
+      //          ok: "By your command..."
+      //       }
+      //    }
+      // }
       stage('Deploy to PROD') {
          steps {
             // TODO
