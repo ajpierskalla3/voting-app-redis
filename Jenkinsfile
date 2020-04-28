@@ -73,7 +73,7 @@ pipeline {
          steps {
             acsDeploy(
                azureCredentialsId: 'azure-jenkins-app',
-               configFilePaths: '$WORKSPACE/azure-vote-all-in-one-redis.yaml',
+               configFilePaths: '**/*.yaml',
                containerService: 'qa-demo-cluster | AKS',
                resourceGroupName: 'qa-demo',
                sshCredentialsId: ''
