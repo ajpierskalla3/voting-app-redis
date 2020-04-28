@@ -69,5 +69,32 @@ pipeline {
             }
          }
       }
+      stage('Deploy to QA') {
+         steps {
+            acsDeploy(
+               azureCredentialsId: 'azure-jenkins-app',
+               configFilePaths: '$WORKSPACE/azure-vote-all-in-one-redis.yaml',
+               containerService: 'qa-demo-cluster | AKS',
+               resourceGroupName: 'qa-demo'
+            )
+         }
+      }
+      stage('Approve PROD Deploy') {
+         options {
+            timeout(time: 1, unit: 'HOURS') 
+         }
+         steps {
+            input {
+               message "Deploy?"
+               ok "By your command..."
+            }
+         }
+      }
+      stage('Deploy to PROD') {
+         steps {
+            // TODO
+            // Add aks deploy step
+         }
+      }
    }
 }
