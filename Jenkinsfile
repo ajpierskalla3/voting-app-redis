@@ -75,7 +75,8 @@ pipeline {
                azureCredentialsId: 'azure-jenkins-app',
                configFilePaths: '$WORKSPACE/azure-vote-all-in-one-redis.yaml',
                containerService: 'qa-demo-cluster | AKS',
-               resourceGroupName: 'qa-demo'
+               resourceGroupName: 'qa-demo',
+               sshCredentialsId: ''
             )
          }
       }
@@ -85,8 +86,8 @@ pipeline {
          }
          steps {
             input {
-               message "Deploy?"
-               ok "By your command..."
+               message: "Deploy?"
+               ok: "By your command..."
             }
          }
       }
