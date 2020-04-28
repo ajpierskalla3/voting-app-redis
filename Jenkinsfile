@@ -93,8 +93,13 @@ pipeline {
       // }
       stage('Deploy to PROD') {
          steps {
-            // TODO
-            echo 'Add aks deploy step'
+            acsDeploy(
+               azureCredentialsId: 'azure-jenkins-app',
+               configFilePaths: '**/*.yaml',
+               containerService: 'prod-demo-cluster | AKS',
+               resourceGroupName: 'prod-demo',
+               sshCredentialsId: ''
+            )
          }
       }
    }
