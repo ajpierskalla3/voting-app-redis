@@ -76,7 +76,7 @@ pipeline {
          steps {
             echo "Deploying to ${ENVIRONMENT}"
             acsDeploy(
-               azureCredentialsId: "azure-jenkins-app",
+               azureCredentialsId: "jenkins_demo",
                configFilePaths: "**/*.yaml",
                containerService: "${ENVIRONMENT}-demo-cluster | AKS",
                resourceGroupName: "${ENVIRONMENT}-demo",
@@ -113,7 +113,7 @@ pipeline {
          steps {
             echo "Deploying to ${ENVIRONMENT}"
             acsDeploy(
-               azureCredentialsId: "azure-jenkins-app",
+               azureCredentialsId: "jenkins_demo",
                configFilePaths: "**/*.yaml",
                containerService: "${ENVIRONMENT}-demo-cluster | AKS",
                resourceGroupName: "${ENVIRONMENT}-demo",
