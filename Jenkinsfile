@@ -74,6 +74,7 @@ pipeline {
             ENVIRONMENT = 'qa'
          }
          steps {
+            echo "Deploying to ${ENVIRONMENT}"
             acsDeploy(
                azureCredentialsId: "azure-jenkins-app",
                configFilePaths: "**/*.yaml",
@@ -96,6 +97,7 @@ pipeline {
             ENVIRONMENT = 'prod'
          }
          steps {
+            echo "Deploying to ${ENVIRONMENT}"
             acsDeploy(
                azureCredentialsId: "azure-jenkins-app",
                configFilePaths: "**/*.yaml",
