@@ -88,9 +88,7 @@ pipeline {
             timeout(time: 1, unit: 'HOURS') 
          }
          steps {
-            input {
-               message: "Deploy?"
-            }
+            input message: "Deploy?"
          }
       }
       stage('Deploy to PROD') {
