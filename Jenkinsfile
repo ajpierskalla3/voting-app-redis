@@ -94,6 +94,14 @@ pipeline {
          steps {
             input message: "Deploy?"
          }
+         post {
+            success {
+               echo "Production Deploy Approved"
+            }
+            aborted {
+               echo "Production Deploy Denied"
+            }
+         }
       }
       stage('Deploy to PROD') {
          when {
