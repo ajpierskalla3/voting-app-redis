@@ -70,35 +70,40 @@ pipeline {
          }
       }
       stage('Deploy to QA') {
+         environment {
+            ENVIRONMENT = 'qa'
+         }
          steps {
             acsDeploy(
-               azureCredentialsId: 'azure-jenkins-app',
-               configFilePaths: '**/*.yaml',
-               containerService: 'qa-demo-cluster | AKS',
-               resourceGroupName: 'qa-demo',
-               sshCredentialsId: ''
+               azureCredentialsId: "azure-jenkins-app",
+               configFilePaths: "**/*.yaml",
+               containerService: "${ENVIRONMENT}-demo-cluster | AKS",
+               resourceGroupName: "${ENVIRONMENT}-demo",
+               sshCredentialsId: ""
             )
          }
       }
-      // stage('Approve PROD Deploy') {
-      //    options {
-      //       timeout(time: 1, unit: 'HOURS') 
-      //    }
-      //    steps {
-      //       input {
-      //          message: "Deploy?"
-      //          ok: "By your command..."
-      //       }
-      //    }
-      // }
+      stage('Approve PROD Deploy') {
+         options {
+            timeout(time: 1, unit: 'HOURS') 
+         }
+         steps {
+            input {
+               message: "Deploy?"
+            }
+         }
+      }
       stage('Deploy to PROD') {
+         environment {
+            ENVIRONMENT = 'prod'
+         }
          steps {
             acsDeploy(
-               azureCredentialsId: 'azure-jenkins-app',
-               configFilePaths: '**/*.yaml',
-               containerService: 'prod-demo-cluster | AKS',
-               resourceGroupName: 'prod-demo',
-               sshCredentialsId: ''
+               azureCredentialsId: "azure-jenkins-app",
+               configFilePaths: "**/*.yaml",
+               containerService: "${ENVIRONMENT}-demo-cluster | AKS",
+               resourceGroupName: "${ENVIRONMENT}-demo",
+               sshCredentialsId: ""
             )
          }
       }
